@@ -39,7 +39,8 @@ SIZE = 22
 
 SW1 = 16
 SW2 = 26
-SW3 = 20
+# My GPIO 20 is Dead on my rPi
+SW3 = 19
 SW4 = 21
 
 defaultText = "[4] [3] [2] [1] ***************\n[1]: Bitcoin*****\n[2]: Litecoin****\n[4]: Shutdown rPi"
