@@ -40,7 +40,7 @@ SIZE = 22
 SW1 = 16
 SW2 = 26
 # My GPIO 20 is Dead on my rPi
-SW3 = False
+SW3 = 19
 SW4 = 21
 
 defaultText = "[4] [3] [2] [1] ***************\n[1]: Bitcoin*****\n[2]: Litecoin****\n[4]: Shutdown rPi"
@@ -72,8 +72,10 @@ def main():
         if GPIO.input(SW2) == False:
             responseBlockr = urllib2.urlopen("http://ltc.blockr.io/api/v1/coin/info")
             htmlResponse = simplejson.load(responseBlockr)
+            #print(htmlResponse["data"]["last_block"]["nb"])
             ltcBlockHeight = int(htmlResponse["data"]["last_block"]["nb"])
 
+            dayDate = todayCleaned()
             write_text(papirus,"%s --LITECOIN--\nBlockheight:%d" % (todayCleaned(), ltcBlockHeight), SIZE)
 
             time.sleep(10)
@@ -88,8 +90,6 @@ def main():
             
         if GPIO.input(SW4) == False:
             write_text(papirus, "Shutdown Begun \nCheers!", SIZE)
-            time.sleep(2)
-            write_text(papirus, "",SIZE)
             shutdown()
 
             #time.sleep(10)
