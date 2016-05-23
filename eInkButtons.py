@@ -88,7 +88,7 @@ def main():
 
             
         if GPIO.input(SW4) == False:
-            #write_text(papirus, "Four", SIZE)
+            write_text(papirus, "Shutdown Begun \nCheers!", SIZE)
             shutdown()
 
             #time.sleep(10)
